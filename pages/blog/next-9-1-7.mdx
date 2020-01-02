@@ -1,0 +1,45 @@
+import withPost from '../../components/blog/with-post'
+import Image from '../../components/image'
+import { meta } from '../../blog/next-9-1-7-preview.mdx'
+import { TerminalInput } from '../../components/text/terminal'
+import Head from 'next/head'
+
+export const config = { amp: true }
+
+export default withPost({ ...meta })
+
+<Head>
+  <script
+    async
+    custom-element="amp-twitter"
+    src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"
+  />
+</Head>
+
+[Next.js 9](/blog/next-9) was released six (6) months ago, followed by [Next.js 9.1](/blog/next-9-1) three (3) months ago.
+These two releases added very powerful new features to Next.js, without increasing our baseline client runtime size.
+
+Since then, we've focused heavily on refining and improving the framework as a whole:
+[9.1.1](https://github.com/zeit/next.js/releases/tag/v9.1.1),
+[9.1.2](https://github.com/zeit/next.js/releases/tag/v9.1.2),
+[9.1.3](https://github.com/zeit/next.js/releases/tag/v9.1.3),
+[9.1.4](https://github.com/zeit/next.js/releases/tag/v9.1.4),
+[9.1.5](https://github.com/zeit/next.js/releases/tag/v9.1.5),
+[9.1.6](https://github.com/zeit/next.js/releases/tag/v9.1.6),
+and [9.1.7](https://github.com/zeit/next.js/releases/tag/v9.1.7).
+Let's dive into what these releases have improved!
+
+- **[7kB – 24.7kB Smaller Client-Side JavaScript Size](#)**: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae augue ut sapien lobortis suscipit.
+- **[Redesigned Production Build CLI Output](#)**: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae augue ut sapien lobortis suscipit.
+- **[New Built-In Polyfills: Fetch API, `URL`, and `Object.assign`](#)**: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae augue ut sapien lobortis suscipit.
+- **[Optimized Page Loading: x% Better Lighthouse Score](#)**: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae augue ut sapien lobortis suscipit.
+- **[Support for the Latest JavaScript Features](#)**: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae augue ut sapien lobortis suscipit.
+- **[Zero-Config Deployment Support for `next export` Applications](#)**: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae augue ut sapien lobortis suscipit.
+- **[React Strict Mode Compliance and Opt-In](#)**: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae augue ut sapien lobortis suscipit.
+- **[Automated Testing against Nightly React Builds](#)**: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae augue ut sapien lobortis suscipit.
+
+All of these benefits are non-breaking and fully backwards compatible. All you need to do to update is run:
+
+<TerminalInput
+  prefix
+>{`npm i next@latest react@latest react-dom@latest`}</TerminalInput>
