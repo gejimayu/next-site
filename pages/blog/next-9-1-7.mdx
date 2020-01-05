@@ -56,6 +56,24 @@ All of these benefits are non-breaking and fully backwards compatible. All you n
 
 ### Zero-Config Deployment Support for `next export` Applications
 
+Next.js now works with [ZEIT Now's Zero Configuration](https://zeit.co/zero-config) out-of-the-box.
+Prior to this change, users who leveraged `next export` were required to create a custom `now.json`.
+
+Leveraging Next.js' export-mode on [ZEIT Now](https://zeit.co/home) is now as simple as having the following `build` script in `package.json`:
+
+```js
+{
+  "scripts": {
+    "build": "next build && next export"
+  }
+}
+```
+
+Then, you can deploy your Next.js application to [ZEIT Now](https://zeit.co/home) with **only a single command**.<br/>
+If you have not yet installed Now, you can do so by [installing Now CLI](https://zeit.co/download).
+
+<TerminalInput prefix>{`now`}</TerminalInput>
+
 ### React Strict Mode Compliance and Opt-In
 
 ### Automated Testing against Nightly React Builds
