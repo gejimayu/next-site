@@ -46,6 +46,12 @@ All of these benefits are non-breaking and fully backwards compatible. All you n
 
 ### 7kB – 24.7kB+ Smaller Client-Side JavaScript Size
 
+In collaboration with the Google Chrome team, all Next.js applications will
+benefit from a **7kB or more** size reduction.
+
+Basic applications should see a 3-4% application size reduction, and more
+advanced applications may see upwards of 6-7% (or more)!
+
 <table>
   <thead>
     <tr>
@@ -77,7 +83,12 @@ All of these benefits are non-breaking and fully backwards compatible. All you n
       </td>
     </tr>
     <tr>
-      <td>ZEIT.co (270+ pages)</td>
+      <td>
+        <a target="_blank" href="https://zeit.co/home">
+          ZEIT.co
+        </a>{' '}
+        Application
+      </td>
       <td>
         <b>13.2MB</b>
       </td>
@@ -95,6 +106,17 @@ All of these benefits are non-breaking and fully backwards compatible. All you n
     </tr>
   </tbody>
 </table>
+
+These savings are partially attributable to
+[replacing the `url` package's client-side version](https://github.com/GoogleChromeLabs/native-url)
+with one built atop the [URL API](https://developer.mozilla.org/en-US/docs/Web/API/URL).
+
+More size reduction has been accomplished by providing built-in, small
+polyfills for often-used packages. You can
+[read more about those polyfills here](#new-built-in-polyfills-fetch-api-url-and-objectassign).
+
+Lastly, we've optimized our JSX output which will introduce savings in direct
+correlation to the amount of JSX in your application.
 
 ### Redesigned Production Build CLI Output
 
