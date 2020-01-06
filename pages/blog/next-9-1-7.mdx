@@ -183,6 +183,31 @@ If you have not yet installed Now, you can do so by [installing Now CLI](https:/
 
 ### React Strict Mode Compliance and Opt-In
 
+All of Next.js' runtime is now Strict Mode-compliant.
+This included updates to Next.js' head manager (`<Head>`), `next/dynamic`, and other core features.
+This means the runtimes now leverage hooks or have eliminated deprecated lifecycles,
+and are using React's new Context API.
+
+We've also added a convenient option for you to enable Strict Mode for your
+application.
+
+To do so, configure the following option in your `next.config.js`:
+
+```js
+// next.config.js
+module.exports = {
+  reactStrictMode: true
+}
+```
+
+If you or your team is not ready to use Strict Mode in your entire application,
+that's OK!
+You can incrementally migrate on a page-by-page basis
+[using `<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html).
+
+While not required, Strict Mode will unlock a myriad optimizations in the future.
+Because of this, we suggest you look into it sooner rather than later!
+
 ### Automated Testing against Nightly React Builds
 
 In [close collaboration](https://github.com/zeit/next.js/pull/9165) with the React Core Team, we're now
