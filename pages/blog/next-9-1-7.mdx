@@ -178,7 +178,34 @@ The result is up to **18kB of JavaScript eliminated** from your production bundl
 
 ### Optimized Page Loading: Better FCP and TTI
 
-TODO: Optimized Page Loading: Better FCP and TTI
+Next.js has optimized its preloading implementation to reduce FCP and overall TTI.
+
+By working around a browser bug, CSS (when used) is now correctly prioritized
+over JavaScript. This results in a faster First Contentful Paint, resulting in
+a much faster visually complete website for your end-users.
+
+Additionally, we've optimized our page prefetching to use lower-priority
+network requests.
+Furthermore, these requests only happen during browser idle-time, resulting in
+a quicker time-to-interactive. This is because the browser will prioritize
+making your application interactive over optimistic prefetching.
+
+<h3>Before</h3>
+<Image
+caption={'FCP and TTI Before Optimizations'}
+captionSpacing={30}
+src="/static/blog/next-9-1-7/nextjs-org-before.png"
+width={1922 / 2}
+height={842 / 2}
+/>
+<h3>After</h3>
+<Image
+caption={'FCP and TTI After Optimizations'}
+captionSpacing={30}
+src="/static/blog/next-9-1-7/nextjs-org-after.png"
+width={1922 / 2}
+height={842 / 2}
+/>
 
 ### Support for the Latest JavaScript Features
 
@@ -352,5 +379,9 @@ We are thankful to our community and all the external feedback and contributions
     color: #dc3545;
     font-style: normal;
     font-weight: bolder;
+  }
+
+  h3 {
+    text-align: center;
   }
 `}</style>
