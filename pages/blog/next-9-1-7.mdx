@@ -54,6 +54,39 @@ All of these benefits are non-breaking and fully backwards compatible. All you n
 
 ### Support for the Latest JavaScript Features
 
+Next.js has an advanced, highly optimized compilation pipeline that allows you to use the latest JavaScript features.
+
+These JavaScript features can be leveraged without worrying about browser compatibility, as we automatically compile
+your code to support all browsers (excluding end-of-life versions).
+This includes ES6+ features, such as
+[async/await (ES2017)](https://github.com/tc39/ecmascript-asyncawait),
+[Object Rest/Spread Properties (ES2018)](https://github.com/tc39/proposal-object-rest-spread),
+[Dynamic `import()` (ES2020)](https://v8.dev/features/dynamic-import),
+and more!
+
+In this release, we're happy to announce support for
+[Optional Chaining (Stage 4)](https://github.com/tc39/proposal-optional-chaining)
+and [Nullish Coalescing (Stage 4)](https://github.com/tc39/proposal-nullish-coalescing).
+
+```jsx
+function Page() {
+  const truck = { brand: { tesla: { name: 'Cybertruck' } } }
+  return (
+    <>
+      <p>Truck of the year is: {truck.brand?.tesla?.name ?? 'Ford F-150'}</p>
+      {/* ⬆ Cybertruck */}
+      <p>Runner up is: {truck.brand?.competition?.name ?? 'Ford F-150'}</p>
+      {/* ⬆ Ford F-150 */}
+    </>
+  )
+}
+
+export default Page
+```
+
+In the future, we plan to output even more optimized bundles via automatic
+[module / nomodule builds](https://nextjs.org/blog/next-9-1#module--nomodule).
+
 ### Zero-Config Deployment Support for `next export` Applications
 
 Next.js now works with [ZEIT Now's Zero Configuration](https://zeit.co/zero-config) out-of-the-box.
