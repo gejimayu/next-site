@@ -120,7 +120,33 @@ correlation to the amount of JSX in your application.
 
 ### Redesigned Production Build CLI Output
 
-TODO: Redesigned Production Build CLI Output
+The CLI's production build output has been redesigned for clarity.
+Because Next.js is a hybrid application framework, each page may have different
+characteristics.
+
+The new output classifies each page as one of the following:
+
+- **Server-Side Rendered (Server)**: the page server-side renders at runtime, meaning it uses `getInitialProps` or [`getServerProps` (proposal)](https://github.com/zeit/next.js/issues/9524)
+- **Automatically Statically Optimized (Static)**: the page was rendered as static HTML at build time, and will be served as a static file (uses no initial props)
+- **Statically Generated Using Computed Data (SSG)**: the page was generated as static HTML/JSON at build time, and will be served as static files (uses [`getStaticProps` (beta)](https://github.com/zeit/next.js/issues/9524))
+
+Furthermore, the new output displays the Gzipped size of each page — these
+sizes exclude files that are shared by all pages (displayed separately).
+
+Each page's size will be colored in accordance with their perceived user experience:
+
+- **Less than 130kB**: <i>Green</i> — your application should be performant under most network and device conditions.
+- **Between 130kB and 170kB**: <i>Yellow</i> — your application is nearing a 5-6 second load time on [global baseline device + network conditions](https://infrequently.org/2017/10/can-you-afford-it-real-world-web-performance-budgets/).
+- **More than 170kB**: <i>Red</i> — your application will likely take more than 6 seconds to load on [the same conditions](https://infrequently.org/2017/10/can-you-afford-it-real-world-web-performance-budgets/).
+
+<Image
+  caption={'The New Next.js Production CLI Output'}
+  src="/static/blog/next-9-1-7/next-new-output.png"
+  width={1496 / 2}
+  height={1190 / 2}
+/>
+
+Please give us feedback on the new output format!
 
 ### New Built-In Polyfills: Fetch API, `URL`, and `Object.assign`
 
@@ -174,7 +200,7 @@ Prior to this change, users who leveraged `next export` were required to create 
 
 Leveraging Next.js' export-mode on [ZEIT Now](https://zeit.co/home) is now as simple as having the following `build` script in `package.json`:
 
-```js
+```json
 {
   "scripts": {
     "build": "next build && next export"
@@ -286,5 +312,21 @@ We are thankful to our community and all the external feedback and contributions
     table th {
       padding: 10px 10px;
     }
+  }
+
+  :global(ul) > :global(li):nth-child(1) > i {
+    color: #28a745;
+    font-style: normal;
+    font-weight: bolder;
+  }
+  :global(ul) > :global(li):nth-child(2) > i {
+    color: #ffc107;
+    font-style: normal;
+    font-weight: bolder;
+  }
+  :global(ul) > :global(li):nth-child(3) > i {
+    color: #dc3545;
+    font-style: normal;
+    font-weight: bolder;
   }
 `}</style>
