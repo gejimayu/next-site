@@ -31,7 +31,7 @@ Let's dive into what these releases have improved!
 
 - **[3% – 8%+ Smaller Client-Side JavaScript Size](#3--8-smaller-client-side-javascript-size)**: We've optimized application output even futher, shaving 7.5kB off hello world applications. More complex applications will show a savings up to 8% or more.
 - **[Redesigned Production Build CLI Output](#redesigned-production-build-cli-output)**: The production build output now shows gzipped file sizes in an easier to understand format.
-- **[New Built-In Polyfills: Fetch API, `URL`, and `Object.assign`](#new-built-in-polyfills-fetch-api-url-and-objectassign)**: Applications can leverage the Fetch API, `URL`, and `Object.assign` in legacy browsers without compatibility concerns.
+- **[New Built-In Polyfills: Fetch API, URL, and Object.assign](#new-built-in-polyfills-fetch-api-url-and-objectassign)**: Applications can leverage the Fetch API, `URL`, and `Object.assign` in legacy browsers without compatibility concerns.
 - **[Optimized Page Loading: Better FCP and TTI](#optimized-page-loading-better-fcp-and-tti)**: We've collaborated closely with the Google Chrome team to maximize page loading performance. This results in a much better end-user experience.
 - **[Support for the Latest JavaScript Features](#support-for-the-latest-javascript-features)**: We're committed to ensuring you can always use the latest JavaScript features, including [Optional Chaining](https://github.com/tc39/proposal-optional-chaining), [Nullish Coalescing](https://github.com/tc39/proposal-nullish-coalescing), and all other ES2020 (ES11) features.
 - **[Zero-Config Deployment Support for `next export` Applications](#zero-config-deployment-support-for-next-export-applications)**: `next export` powered applications can now be deployed to [ZEIT Now](https://zeit.co/home) with zero configuration.
@@ -148,9 +148,33 @@ Each page's size will be colored in accordance with their perceived user experie
 
 We'd love to hear your feedback about the new build output.
 
-### New Built-In Polyfills: Fetch API, `URL`, and `Object.assign`
+### New Built-In Polyfills: Fetch API, URL, and Object.assign
 
-TODO: New Built-In Polyfills: Fetch API, `URL`, and `Object.assign`
+While examining many users' applications and our examples, we found that most
+shipped with a similar set of polyfills.
+In some cases, applications even had duplicate polyfills for the same feature.
+
+To remedy this, we've built-in polyfills for the three most common APIs we
+observed.
+
+Using differential loading, these polyfills are **not loaded for 83% of web traffic** globally.
+This means that the majority of your users will not download the bytes associated
+with these polyfills—they'll only be downloaded if necessary.
+
+Furthermore, any well-known polyfills that we've now built in will be
+completely eliminated from your production build.
+This means you will not pay the price for one of your dependencies that
+inadvertently import a polyfill for one of these APIs.
+
+The list of built-in APIs and the polyfills they make obsolete are as follows:
+
+- [**Fetch API**](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) — Replacing: `whatwg-fetch`, `isomorphic-fetch`, `unfetch`, and `isomorphic-unfetch`.
+- [**URL**](https://developer.mozilla.org/en-US/docs/Web/API/URL) — Replacing: the [`url` package (Node.js API)](https://nodejs.org/api/url.html).
+- [**`Object.assign`**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) — Replacing: `object-assign`, `object.assign`, and `core-js/object/assign`.
+
+This change is completely non-breaking, and all polyfills are made with the
+most spec-compliant versions available.
+The result is up to **18kB of JavaScript eliminated** from your production bundles.
 
 ### Optimized Page Loading: Better FCP and TTI
 
